@@ -13,7 +13,7 @@ class SocialNetworkState extends State<SocialNetwork>{
   @override
   Widget build(BuildContext context){
     return new Scaffold(
-      body: TimeLine(boxCount:3)
+      body: TimeLine(boxCount:6)
     );
   }
 }
@@ -40,7 +40,7 @@ class TimeLineState extends State<TimeLine>{
 
   int boxCount;
   bool tap;
-  ListView timeline;
+  List<Widget> widgetList; 
 
   TimeLineState({
     this.boxCount = 2,
@@ -48,11 +48,12 @@ class TimeLineState extends State<TimeLine>{
   });
 
   onTap(){
-    this.boxCount++;
+    
     setState(() {
-      boxCount: this.boxCount;
+      this.boxCount++;
+      widgetList.add(createSection());
+      build(context);
     });
-    this.timeline = createTimeline();
   }
 
   Widget createSection(){
@@ -105,7 +106,7 @@ class TimeLineState extends State<TimeLine>{
               color: Colors.blue,
             ),
           ),
-          new Positioned(
+          Positioned(
             top: 100.0,
             left: 15.0,
             child: new Container(
@@ -130,6 +131,7 @@ class TimeLineState extends State<TimeLine>{
             left: 25.0,
             child: InkWell(
               onTap: (){
+                widgetList.add(createSection());
                 onTap();
               },
               child: Container(
@@ -149,30 +151,26 @@ class TimeLineState extends State<TimeLine>{
                 ),
               ),
             )
-            
-
           )
         ],
       );
   }
 
-  Widget createTimeline(){
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-      return createSection();
-      },
-      itemCount: this.boxCount,
-    ); 
+  Widget createTimeline(List<Widget> widgetList){
+    return  ListView(
+      children:  widgetList
+    );
   }
 
   @override
   void initState() {
     super.initState();
-    this.timeline = createTimeline();
+    this.widgetList = List.generate(this.boxCount, (index) => createSection());
   }
 
   @override
   Widget build(BuildContext context){
-    return this.timeline;
+    // return this.createTimeline(this.widgetList);
+    return ListView(children: this.widgetList);
   }
 }
