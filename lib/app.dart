@@ -1,8 +1,7 @@
-import 'package:exploreFlutter/bookmarks.dart';
+import 'package:exploreFlutter/socialNetwork.dart';
 import 'package:flutter/material.dart';
 import 'package:exploreFlutter/home.dart';
 import 'package:exploreFlutter/discover.dart';
-import 'package:exploreFlutter/bookmarks.dart';
 
 class App extends StatefulWidget{
   @override
@@ -17,7 +16,7 @@ class AppState extends State<App>{
   final widgetOptions = [
     Discover(),
     Home(),
-    Bookmarks(),
+    SocialNetwork(),
   ];
 
   @override
