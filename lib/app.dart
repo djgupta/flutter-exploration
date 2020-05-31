@@ -16,7 +16,7 @@ class AppState extends State<App>{
   final widgetOptions = [
     Discover(),
     Home(),
-    SocialNetwork(),
+    SocialNetwork()
   ];
 
   @override
@@ -34,18 +34,18 @@ class AppState extends State<App>{
         ),
         bottomNavigationBar: new BottomNavigationBar(
           items: [
-            new BottomNavigationBarItem(
+            BottomNavigationBarItem(
               icon: const Icon(Icons.public),
-              title: new Text('Discover'),
+              title: Text('Discover'),
             ),
-            new BottomNavigationBarItem(
+            BottomNavigationBarItem(
               icon: const Icon(Icons.home),
-              title: new Text('Home'),
+              title: Text('Home'),
             ),
-            new BottomNavigationBarItem(
+            BottomNavigationBarItem(
               icon: const Icon(Icons.work),
-              title: new Text('Networks'),
-            )
+              title: Text('Networks'),
+            ),
           ],
       currentIndex: selectedIndex,
       fixedColor: Colors.indigo,
